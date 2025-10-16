@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from core.database import Base, engine
+
+from app.talent.routers.talent_router import router as talent_router
+
+from .core.database import Base, engine
 
 Base.metadata.create_all(bind=engine)
 
@@ -13,6 +16,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(talent_router)
+
 
 @app.get("/")
 async def root():
