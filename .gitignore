@@ -147,3 +147,6 @@ Thumbs.db
 
 # Poetry
 poetry.lock
+
+arch.md
+plan.md
